@@ -1,5 +1,8 @@
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr('LlaveSecretaParaEncriptar');
+
+const {ConfiguracionCrypto} = require('../configuracion/configuracion')
+
+const cryptr = new Cryptr(ConfiguracionCrypto.llaveSecreta);
 
 class Persona{
 
@@ -36,24 +39,4 @@ class Persona{
     }
 }
 
-const persona = new Persona("Luke", "Skywalker", "El Papa es Darth Vader");
-//persona.id = 1
-
-const persona2 = new Persona("Leia", "Organa", "El hermana de Luke");
-//persona2.id = 2
-
-//console.log(persona.#prepararSecreto)
-
-
-persona.nombreCompleto = "Nombre nuevo"
-console.log("Nombre completo de la persona 1", persona.nombreCompleto)
-console.log("Este es el secreto de la persona 1", persona.obtenerSecreto)
-
-console.log("Este es el secreto desencritpado de la persona 1", 
-cryptr.decrypt(persona.obtenerSecreto))
-
-console.log(persona)
-console.log(persona2)
-
-persona.presentarse()
-persona2.presentarse()
+module.exports = {Persona}
